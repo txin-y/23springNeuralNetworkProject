@@ -1,5 +1,6 @@
 # 23springNeuralNetworkProject - Xiaoting Yu
 
+# Report (First Solution)
 Implement sentiment analysis based on IMDB dataset using textclassification module and transformers 
 
 Given the issues with transformer to be solved the Neural Network Architecture in this solution consists of the following parts: an embedding layer, an average pooling layer, and a linear layer. The embedding layer maps each word in the vocabulary to a low-dimensional vector, and the average pooling layer computes the average of the embeddings for each review. Finally, the linear layer maps the pooled embeddings to the output labels. This architecture is a commonly used approach for text classification tasks and has shown to be effective.
@@ -28,7 +29,7 @@ To improve the generalization capabilities of the model, several strategies can 
 
 code is based on https://pytorch.org/tutorials/beginner/text_sentiment_ngrams_tutorial.html
 
-# Brief Introduction and Instructions on How to Run the Code
+# Report (Final Solution)
 
 This report provides an overview of four different versions of code for sentiment analysis. The first three versions utilize the IMDB dataset, while the fourth version is based on the Tweet text dataset from Kaggle. 
 
@@ -42,24 +43,16 @@ The second version replaces the simple networks with a transformer built from sc
 
 ## Version 3 - LSTM Network
 
-The third version implements an LSTM network for classification and achieves higher accuracy. This version also includes visualizations by drawing loss and accuracy curves, introduces a new measurement metric (ROC and AUC), and calculates the area at the end of the entire training.
+The third version employs an LSTM network for classification, resulting in improved accuracy. Additionally, visualizations such as loss and accuracy curves are incorporated to enhance the analysis. A new evaluation metric, ROC and AUC, is introduced, with the corresponding curve plotted and the area calculated at the end of the training process. These elements are handled separately in three distinct kernels. To avoid confusion, the simple version has been commented out.
 
 ## Version 4 - Tweet Text Dataset
 
 This version uses the Tweet text dataset from Kaggle to classify racist or sexist tweets from other tweets. The dataset contains about 32k tweets and is unbalanced, with 29,720 non-hatred and 2,242 hatred tweets.
 
-# How to Run the Code
-
-1. Choose the version of the code you'd like to run (either Version 1, 2, 3, or 4).
-2. Ensure you have the necessary libraries and dependencies installed, such as PyTorch.
-3. Load the corresponding dataset (IMDB for Versions 1-3 or the Tweet text dataset for Version 4).
-4. Configure the hyperparameters according to the version you've chosen.
-5. Run the code to train the model and evaluate its performance.
-
 Note: In Version 2, the transformer model was challenging to train, and it was difficult to achieve good results. However, the code still demonstrates the various attempts made to improve its performance. It's essential to learn from this experience and consider using a pre-trained model or alternative networks like LSTM for better results.
 
-# Experimenting with Learning Rate, Optimizer, and Hyperparameters
-## Learning Rate
+## Experimenting with Learning Rate, Optimizer, and Hyperparameters
+### Learning Rate
 LR 0.1
 
 Epoch = 10
@@ -97,7 +90,7 @@ model = Net(
 ```
 Accuracy: 0.506
 
-## Optimizer
+### Optimizer
 Change From SGD to Adam
 
 ```
@@ -107,7 +100,7 @@ Accuracy: 0.498
 
 LR: 0.01
 
-## Hyperparameters
+### Hyperparameters
 ```
 model = Net(
     vocab_size=len(vocab),
@@ -152,4 +145,25 @@ model = Net(
     classifier_dropout=0.,
 ).to(device)
 ```
-Despite the various experiments, it is still challenging to train a transformer from scratch. Using a pre-trained model could be a more efficient choice, but for learning purposes, choosing another network like LSTM might be a better choice
+Despite the various experiments, it is still challenging to train a transformer from scratch. Using a pre-trained model could be a more efficient choice, but for learning purposes, choosing another network like LSTM might be a better choice.
+
+## About Dataset -- Twitter Sentiment Analysis
+
+### Context
+
+The objective of this task is to detect hate speech in tweets. For the sake of simplicity, we say a tweet contains hate speech if it has a racist or sexist sentiment associated with it. So, the task is to classify racist or sexist tweets from other tweets.
+
+Formally, given a training sample of tweets and labels, where label '1' denotes the tweet is racist/sexist and label '0' denotes the tweet is not racist/sexist, your objective is to predict the labels on the test dataset.
+
+### Content
+
+Full tweet texts are provided with their labels for training data.
+Mentioned users' username is replaced with [@user](https://www.kaggle.com/user).
+
+For train.csv they have about 32K tweets and consists of three columns: id, label, and texts. Since it's a hatred detection dataset, it's unbalanced including 29,720 non-hatred and 2,242 hatred.
+
+### Acknowledgements
+
+Dataset is provided by [Analytics Vidhya](http://https//datahack.analyticsvidhya.com/contest/practice-problem-twitter-sentiment-analysis/)
+
+link : https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech?select=train.csv
