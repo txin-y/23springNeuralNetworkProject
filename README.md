@@ -41,17 +41,21 @@ This version uses a simple neural network to classify the reviews into positive 
 
 The second version replaces the simple networks with a transformer built from scratch. However, this version had difficulty learning, and after several attempts, the network still could not learn effectively.
 
+### Note: In Version 2, the transformer model was challenging to train, and it was difficult to achieve good results. However, the code still demonstrates the various attempts made to improve its performance. It's essential to learn from this experience and consider using a pre-trained model or alternative networks like LSTM for better results.
+
 ## Version 3 - LSTM Network
 
 The third version employs an LSTM network for classification, resulting in improved accuracy. Additionally, visualizations such as loss and accuracy curves are incorporated to enhance the analysis. A new evaluation metric, ROC and AUC, is introduced, with the corresponding curve plotted and the area calculated at the end of the training process. These elements are handled separately in three distinct kernels. To avoid confusion, the simple version has been commented out.
 
 ## Version 4 - Tweet Text Dataset
 
+To run this code successfully on Colab, we need to upload train.csv to path /content/train.csv.
+
 This version uses the Tweet text dataset from Kaggle to classify racist or sexist tweets from other tweets. The dataset contains about 32k tweets and is unbalanced, with 29,720 non-hatred and 2,242 hatred tweets.
 
-Note: In Version 2, the transformer model was challenging to train, and it was difficult to achieve good results. However, the code still demonstrates the various attempts made to improve its performance. It's essential to learn from this experience and consider using a pre-trained model or alternative networks like LSTM for better results.
+An advanced version of tweet text dataset added more illustrations and visualizations on the dataset, and fix the metric problem. Due to the fact that the dataset is unbalanced, the hatred speech only accounts for 5.6% of the total dataset. So the accuracy cannot prove the effectiveness of the network. So again, ROC curve is introduced to further illustrate the results after each epoch. After 20 epochs, we save the 20th weights and test the unseen data with this weights which turned out to be similar to the training data.
 
-## Experimenting with Learning Rate, Optimizer, and Hyperparameters
+## Experimenting with Learning Rate, Optimizer, and Hyperparameters （Version 2）
 ### Learning Rate
 LR 0.1
 
