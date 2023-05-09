@@ -167,6 +167,10 @@ model = Net(
 ```
 Despite the various experiments, it is still challenging to train a transformer from scratch. Using a pre-trained model could be a more efficient choice, but for learning purposes, choosing another network like LSTM might be a better choice.
 
+### Difficulties 
+
+Despite tuning hyperparmeters in this project, which took me a bunch of time, I found it difficult to deal issues with different data structures which I just learned this semester. And finding a proper dataset and reading it as custom dataset properly are quite challenging as well.
+
 ## About Dataset -- IMDB review
 
 ### Context
@@ -180,17 +184,9 @@ In the labeled train/test sets, a negative review has a score <= 4 out of 10, an
 
 ### Acknowledgements
 
-@InProceedings{maas-EtAl:2011:ACL-HLT2011,
-  author    = {Maas, Andrew L.  and  Daly, Raymond E.  and  Pham, Peter T.  and  Huang, Dan  and  Ng, Andrew Y.  and  Potts, Christopher},
-  title     = {Learning Word Vectors for Sentiment Analysis},
-  booktitle = {Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies},
-  month     = {June},
-  year      = {2011},
-  address   = {Portland, Oregon, USA},
-  publisher = {Association for Computational Linguistics},
-  pages     = {142--150},
-  url       = {http://www.aclweb.org/anthology/P11-1015}
-}
+Author: Maas, Andrew L.  and  Daly, Raymond E.  and  Pham, Peter T.  and  Huang, Dan  and  Ng, Andrew Y.  and  Potts, Christopher
+
+link : http://www.aclweb.org/anthology/P11-1015
 
 ## About Dataset -- Twitter Sentiment Analysis
 
