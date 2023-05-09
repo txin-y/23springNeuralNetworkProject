@@ -1,9 +1,9 @@
 # 23springNeuralNetworkProject - Xiaoting Yu
 
 # Report (First Solution)
-Implement sentiment analysis based on IMDB dataset using textclassification module and transformers 
+Implement sentiment analysis based on the IMDB dataset using a text classification module and transformers 
 
-Given the issues with transformer to be solved the Neural Network Architecture in this solution consists of the following parts: an embedding layer, an average pooling layer, and a linear layer. The embedding layer maps each word in the vocabulary to a low-dimensional vector, and the average pooling layer computes the average of the embeddings for each review. Finally, the linear layer maps the pooled embeddings to the output labels. This architecture is a commonly used approach for text classification tasks and has shown to be effective.
+Given the issues with the transformer to be solved the Neural Network Architecture in this solution consists of the following parts: an embedding layer, an average pooling layer, and a linear layer. The embedding layer maps each word in the vocabulary to a low-dimensional vector, and the average pooling layer computes the average of the embeddings for each review. Finally, the linear layer maps the pooled embeddings to the output labels. This architecture is a commonly used approach for text classification tasks and has shown to be effective.
 
 The loss function used is cross-entropy loss, which is suitable for multi-class classification problems. The optimization algorithm used is stochastic gradient descent (SGD) with a learning rate of 5. The learning rate is reduced by a factor of 10 after every epoch if the validation accuracy does not improve, using the StepLR scheduler. These hyperparameters were chosen based on experimentation and previous work in the field.
 
@@ -22,16 +22,16 @@ Epoch 9: 84.7%
 Epoch 10: 84.7%
 The reported test accuracy is 84.5%.
 
-The classification accuracy achieved by the model is quite good, considering the simplicity of the architecture and the relatively small size of the dataset. However, it is important to note that the accuracy on the training set may be significantly higher than the validation and test accuracies, indicating overfitting. This can be seen in the reported validation accuracies, which plateau at around 84-85% after the fourth epoch, while the training accuracy may continue to increase.
+The classification accuracy achieved by the model is quite good, considering the simplicity of the architecture and the relatively small size of the dataset. However, it is important to note that the accuracy of the training set may be significantly higher than the validation and test accuracies, indicating overfitting. This can be seen in the reported validation accuracies, which plateau at around 84-85% after the fourth epoch, while the training accuracy may continue to increase.
 
 Ideas for Improvements:
-To improve the generalization capabilities of the model, several strategies can be used. One possible strategy is to increase the size of the dataset by using data augmentation techniques such as adding noise, synonyms, or perturbations to the text data. Another strategy is to use a more complex neural network architecture, such as a LSTM or transformer (can be seen in v2), which can capture more complex patterns in the text data. Additionally, regularization techniques such as dropout or weight decay can be applied to prevent overfitting. Finally, the hyperparameters of the model can be tuned using a grid search or a random search to find the optimal combination of learning rate, batch size, and architecture parameters.
+To improve the generalization capabilities of the model, several strategies can be used. One possible strategy is to increase the size of the dataset by using data augmentation techniques such as adding noise, synonyms, or perturbations to the text data. Another strategy is to use a more complex neural network architecture, such as an LSTM or transformer (can be seen in v2), which can capture more complex patterns in the text data. Regularization techniques such as dropout or weight decay can also be applied to prevent overfitting. Finally, the hyperparameters of the model can be tuned using a grid search or a random search to find the optimal combination of the learning rate, batch size, and architecture parameters.
 
 code is based on https://pytorch.org/tutorials/beginner/text_sentiment_ngrams_tutorial.html
 
 # Report (Final Solution)
 
-This report provides an overview of four different versions of code for sentiment analysis. The first three versions utilize the IMDB dataset, while the fourth version is based on the Tweet text dataset from Kaggle. 
+This report provides an overview of four different versions of code for sentiment analysis and provides a comprehensive understanding of the different networks and datasets on text classification. The first three versions utilize the IMDB dataset, while the fourth version is based on the Tweet text dataset from Kaggle. 
 
 ## Version 1 - Simple Networks
 
@@ -39,13 +39,13 @@ This version uses a simple neural network to classify the reviews into positive 
 
 ## Version 2 - Transformer from Scratch
 
-The second version replaces the simple networks with a transformer built from scratch. However, this version had difficulty learning, and after several attempts, the network still could not learn effectively.
+The second version replaces the simple networks with a transformer built from scratch. However, this version had difficulty learning, and after several attempts, the network still could not learn effectively. In this version, it's no need to run the code since it's just an illustration of my attempt to train Transformer from scratch.
 
 ### Note: In Version 2, the transformer model was challenging to train, and it was difficult to achieve good results. However, the code still demonstrates the various attempts made to improve its performance. It's essential to learn from this experience and consider using a pre-trained model or alternative networks like LSTM for better results.
 
 ## Version 3 - LSTM Network
 
-The third version employs an LSTM network for classification, resulting in improved accuracy. Additionally, visualizations such as loss and accuracy curves are incorporated to enhance the analysis. A new evaluation metric, ROC and AUC, is introduced, with the corresponding curve plotted and the area calculated at the end of the training process. These elements are handled separately in three distinct kernels. To avoid confusion, the simple version has been commented out.
+The third version employs an LSTM network for classification, resulting in improved accuracy. Visualizations such as loss and accuracy curves are also incorporated to enhance the analysis. And we can see there's a slight decrease in valid accuracy. A new evaluation metric, ROC and AUC, is introduced, with the corresponding curve plotted and the area calculated at the end of the training process. These elements are handled separately in three distinct kernels. To avoid confusion, the simple version has been commented out.
 
 ## Version 4 - Tweet Text Dataset
 
@@ -53,23 +53,23 @@ To run this code successfully on Colab, we need to upload train.csv to path /con
 
 This version uses the Tweet text dataset from Kaggle to classify racist or sexist tweets from other tweets. The dataset contains about 32k tweets and is unbalanced, with 29,720 non-hatred and 2,242 hatred tweets.
 
-An **advanced version** of the tweet text dataset added more illustrations and visualizations to the dataset, and fix the metric problem: due to the fact that the dataset is unbalanced, the hatred speech only accounts for 5.6% of the total dataset. So the accuracy cannot prove the effectiveness of the network. So again, the ROC curve is introduced to further illustrate the results after each epoch. After 20 epochs, we save the 20th weights and test the unseen data with these weights which turned out to be similar to the training data.
+An **advanced version** of the tweet text dataset added more illustrations and visualizations to the dataset, and fix the metric problem: because the dataset is unbalanced, the hatred speech only accounts for 5.6% of the total dataset. So the accuracy cannot prove the effectiveness of the network. So again, the ROC curve is introduced to further illustrate the results after each epoch. After 20 epochs, we save the 20th weights and test the unseen data with these weights, which were similar to the training data.
 
-## Comparison with different Dataset and Networks
+## Comparison with different Datasets and Networks
 
 ### IMDB & Tweettext 
 
-IMDB is a built-in dataset in Pytorch and is a balanced dataset with 25K comments each train and test dataset and is relatively easy to train.
+IMDB is a built-in dataset in Pytorch and is a balanced dataset with 25K comments for each train and test dataset and is relatively easy to train.
 
-Tweet dataset is collected on Twitter platform and contains much more complexities than the first one, and accordingly a preprocessing is implemented.
+The tweet dataset is collected on the Twitter platform and contains much more complexities than the first one, and accordingly, a preprocessing is implemented.
 
 Overall, it's more difficult to train the second dataset and the performance is not as good as the first one, but it's a more practical dataset and also some ethical issues are involved which need to consider more biases and potential impacts in the future training.
 
 ### Simple Network & LSTM & Transformer
 
-The overall perfomance in this case (text classification on IMDB) is LSTM > Simple Network > Transformer.
+The overall performance in this case (text classification on IMDB) is LSTM > Simple Network > Transformer.
 
-Though the complexity of transformer is larger than LSTM as previously mentioned it's hard to train from scartch. 
+Though the complexity of the transformer is larger than LSTM as previously mentioned it's hard to train from scratch. 
 
 ## Experimenting with Learning Rate, Optimizer, and Hyperparameters （Version 2）
 ### Learning Rate
@@ -166,6 +166,31 @@ model = Net(
 ).to(device)
 ```
 Despite the various experiments, it is still challenging to train a transformer from scratch. Using a pre-trained model could be a more efficient choice, but for learning purposes, choosing another network like LSTM might be a better choice.
+
+## About Dataset -- IMDB review
+
+### Context
+
+This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. A set of 25,000 highly polar movie reviews for training, and 25,000 for testing is provided. There is additional unlabeled data for use as well. Raw text and already processed bag of
+words formats are provided. It also includes an additional 50,000unlabeled documents for unsupervised learning.
+
+### Content
+
+In the labeled train/test sets, a negative review has a score <= 4 out of 10, and a positive review has a score >= 7 out of 10. Thus reviews with more neutral ratings are not included in the train/test sets. In the unsupervised set, reviews of any rating are included and there are an even number of reviews > 5 and <= 5. 
+
+### Acknowledgements
+
+@InProceedings{maas-EtAl:2011:ACL-HLT2011,
+  author    = {Maas, Andrew L.  and  Daly, Raymond E.  and  Pham, Peter T.  and  Huang, Dan  and  Ng, Andrew Y.  and  Potts, Christopher},
+  title     = {Learning Word Vectors for Sentiment Analysis},
+  booktitle = {Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies},
+  month     = {June},
+  year      = {2011},
+  address   = {Portland, Oregon, USA},
+  publisher = {Association for Computational Linguistics},
+  pages     = {142--150},
+  url       = {http://www.aclweb.org/anthology/P11-1015}
+}
 
 ## About Dataset -- Twitter Sentiment Analysis
 
