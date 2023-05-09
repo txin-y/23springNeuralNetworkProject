@@ -53,7 +53,23 @@ To run this code successfully on Colab, we need to upload train.csv to path /con
 
 This version uses the Tweet text dataset from Kaggle to classify racist or sexist tweets from other tweets. The dataset contains about 32k tweets and is unbalanced, with 29,720 non-hatred and 2,242 hatred tweets.
 
-An advanced version of tweet text dataset added more illustrations and visualizations on the dataset, and fix the metric problem. Due to the fact that the dataset is unbalanced, the hatred speech only accounts for 5.6% of the total dataset. So the accuracy cannot prove the effectiveness of the network. So again, ROC curve is introduced to further illustrate the results after each epoch. After 20 epochs, we save the 20th weights and test the unseen data with this weights which turned out to be similar to the training data.
+An **advanced version** of the tweet text dataset added more illustrations and visualizations to the dataset, and fix the metric problem: due to the fact that the dataset is unbalanced, the hatred speech only accounts for 5.6% of the total dataset. So the accuracy cannot prove the effectiveness of the network. So again, the ROC curve is introduced to further illustrate the results after each epoch. After 20 epochs, we save the 20th weights and test the unseen data with these weights which turned out to be similar to the training data.
+
+## Comparison with different Dataset and Networks
+
+### IMDB & Tweettext 
+
+IMDB is a built-in dataset in Pytorch and is a balanced dataset with 25K comments each train and test dataset and is relatively easy to train.
+
+Tweet dataset is collected on Twitter platform and contains much more complexities than the first one, and accordingly a preprocessing is implemented.
+
+Overall, it's more difficult to train the second dataset and the performance is not as good as the first one, but it's a more practical dataset and also some ethical issues are involved which need to consider more biases and potential impacts in the future training.
+
+### Simple Network & LSTM & Transformer
+
+The overall perfomance in this case (text classification on IMDB) is LSTM > Simple Network > Transformer.
+
+Though the complexity of transformer is larger than LSTM as previously mentioned it's hard to train from scartch. 
 
 ## Experimenting with Learning Rate, Optimizer, and Hyperparameters （Version 2）
 ### Learning Rate
