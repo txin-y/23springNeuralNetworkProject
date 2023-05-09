@@ -158,25 +158,25 @@ import math
 model = Net(
     vocab_size=len(vocab),
     d_model=200,
-    nhead=2,  # the number of heads in the multiheadattention models
+    nhead=2,  # the number of heads in the multi-head attention models
     dim_feedforward=2048,  # the dimension of the feedforward network model in nn.TransformerEncoder
     num_layers=2,
     dropout=0.1,
     classifier_dropout=0.,
 ).to(device)
 ```
-Despite the various experiments, it is still challenging to train a transformer from scratch. Using a pre-trained model could be a more efficient choice, but for learning purposes, choosing another network like LSTM might be a better choice.
+Despite the various experiments, training a transformer from scratch is still challenging. Using a pre-trained model could be a more efficient choice, but for learning purposes, choosing another network like LSTM might be a better choice.
 
 ### Difficulties 
 
-Despite tuning hyperparmeters in this project, which took me a bunch of time, I found it difficult to deal issues with different data structures which I just learned this semester. And finding a proper dataset and reading it as custom dataset properly are quite challenging as well.
+Despite tuning hyperparameters in this project, which took me a lot of time, I found it difficult to deal with different data structures, which I just learned this semester. And finding a proper dataset and reading it as a custom dataset is also quite challenging.
 
 ## About Dataset -- IMDB review
 
 ### Context
 
-This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. A set of 25,000 highly polar movie reviews for training, and 25,000 for testing is provided. There is additional unlabeled data for use as well. Raw text and already processed bag of
-words formats are provided. It also includes an additional 50,000unlabeled documents for unsupervised learning.
+This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. A set of 25,000 highly polar movie reviews for training and 25,000 for testing is provided. There is additional unlabeled data for use as well. Raw text and already processed bag of
+words formats are provided. It also includes an additional 50,000 unlabeled documents for unsupervised learning.
 
 ### Content
 
@@ -186,7 +186,7 @@ In the labeled train/test sets, a negative review has a score <= 4 out of 10, an
 
 Author: Maas, Andrew L.  and  Daly, Raymond E.  and  Pham, Peter T.  and  Huang, Dan  and  Ng, Andrew Y.  and  Potts, Christopher
 
-link : http://www.aclweb.org/anthology/P11-1015
+link: http://www.aclweb.org/anthology/P11-1015
 
 ## About Dataset -- Twitter Sentiment Analysis
 
@@ -201,10 +201,14 @@ Formally, given a training sample of tweets and labels, where label '1' denotes 
 Full tweet texts are provided with their labels for training data.
 Mentioned users' username is replaced with [@user](https://www.kaggle.com/user).
 
-For train.csv they have about 32K tweets and consists of three columns: id, label, and texts. Since it's a hatred detection dataset, it's unbalanced including 29,720 non-hatred and 2,242 hatred.
+For train.csv they have about 32K tweets and consist of three columns: id, label, and texts. Since it's a hatred detection dataset, it's unbalanced including 29,720 non-hatred and 2,242 hatred.
 
 ### Acknowledgements
 
-Dataset is provided by [Analytics Vidhya](http://https//datahack.analyticsvidhya.com/contest/practice-problem-twitter-sentiment-analysis/)
+The dataset is provided by [Analytics Vidhya](http://https//datahack.analyticsvidhya.com/contest/practice-problem-twitter-sentiment-analysis/)
 
-link : https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech?select=train.csv
+link: https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech?select=train.csv'
+
+## For Extra Credit part
+
+An **HTML** file is attached in the repo and you need to download the file to open it in a browser.
