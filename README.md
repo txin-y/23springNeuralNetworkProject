@@ -45,7 +45,9 @@ The second version replaces the simple networks with a transformer built from sc
 
 ## Version 3 - LSTM Network
 
-The third version employs an LSTM network for classification, resulting in improved accuracy. Visualizations such as loss and accuracy curves are also incorporated to enhance the analysis. And we can see there's a slight decrease in valid accuracy. A new evaluation metric, ROC and AUC, is introduced, with the corresponding curve plotted and the area calculated at the end of the training process. These elements are handled separately in three distinct kernels. To avoid confusion, the simple version has been commented out.
+The third version employs an LSTM network for classification, resulting in improved accuracy. Visualizations such as loss and accuracy curves are also incorporated to enhance the analysis. And we can see there's a slight decrease in valid accuracy. A new evaluation metric, ROC and AUC, is introduced, with the corresponding curve plotted and the area calculated at the end of the training process. These elements are handled separately in three distinct kernels. To avoid confusion, the simple version has been commented out. To create the ROC curve, we need to select different thresholds for converting predicted probabilities into binary predictions. Each threshold will classify instances as positive or negative based on whether their predicted probability is above or below the threshold. 
+
+For each threshold, we calculate the TPR and FPR. TPR is the ratio of true positives to the total actual positives, while FPR is the ratio of false positives to the total actual negatives. The ROC curve is created by plotting the FPR on the x-axis and the TPR on the y-axis for each threshold. The curve illustrates the model's performance across various classification thresholds.
 
 ## Version 4 - Tweet Text Dataset
 
